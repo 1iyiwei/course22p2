@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1340" height="1850" viewBox="0 0 1340 1850" version="1.1"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<marker id="arrow-black" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#202124"/></marker>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#188038"/></marker>
+<marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker>
+</defs>
+
+<rect x="0" y="0" width="1340" height="1850" fill="#ffffff"/>
+<text x="670.0" y="28" font-family="sans-serif" font-size="21" font-weight="bold" font-style="normal" fill="#202124" text-anchor="middle">UNet2DModel(in_channels=1, out_channels=1, nfs=(32,64,128,256), num_layers=2)</text>
+<rect x="20" y="46" width="1300" height="195" rx="0" style="fill:#fafafa;stroke:#c0c0c0;stroke-width:1"/>
+<text x="34" y="68" font-family="sans-serif" font-size="16" font-weight="bold" font-style="normal" fill="#202124" text-anchor="start">Building blocks</text>
+<rect x="44" y="88" width="216" height="60" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.4"/>
+<text x="152" y="82" font-family="sans-serif" font-size="14.5" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">unet_conv(ni,nf,ks)</text>
+<rect x="58" y="102" width="58" height="32" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1"/>
+<text x="87.0" y="122" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">norm</text>
+<path d="M 116 118 L 124 118" style="fill:none;stroke:#5f6368;stroke-width:1.2" marker-end="url(#arrow-gray)"/>
+<rect x="124" y="102" width="58" height="32" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1"/>
+<text x="153.0" y="122" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">act</text>
+<path d="M 182 118 L 190 118" style="fill:none;stroke:#5f6368;stroke-width:1.2" marker-end="url(#arrow-gray)"/>
+<rect x="190" y="102" width="58" height="32" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1"/>
+<text x="219.0" y="122" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Conv2d</text>
+<text x="152" y="164" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="middle">= norm(ni) → act()</text>
+<text x="152" y="179" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="middle">→ Conv2d(ni→nf, k=ks, pad=ks//2)</text>
+<rect x="300" y="88" width="296" height="82" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.6"/>
+<text x="448" y="82" font-family="sans-serif" font-size="14.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="middle">UnetResBlock(ni→nf)</text>
+<rect x="322" y="102" width="80" height="26" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1"/>
+<text x="362" y="120" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">unet_conv</text>
+<rect x="426" y="102" width="80" height="26" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1"/>
+<text x="466" y="120" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">unet_conv</text>
+<path d="M 402 115 L 426 115" style="fill:none;stroke:#5f6368;stroke-width:1.1" marker-end="url(#arrow-gray)"/>
+<circle cx="562" cy="114" r="11" style="fill:none;stroke:#202124;stroke-width:1.3"/>
+<text x="562" y="118.5" font-family="sans-serif" font-size="16" font-weight="bold" font-style="normal" fill="#202124" text-anchor="middle">+</text>
+<path d="M 506 114 L 551 114" style="fill:none;stroke:#5f6368;stroke-width:1.1" marker-end="url(#arrow-gray)"/>
+<path d="M 313 115 L 313 150 L 562 150 L 562 125" style="fill:none;stroke:#5f6368;stroke-width:1;stroke-dasharray:3,2" marker-end="url(#arrow-gray)"/>
+<text x="426" y="164" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="middle">idconv (1×1 conv) if ni≠nf, else identity</text>
+<text x="650" y="84" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">down_block(ni→nf, L, down) = L × UnetResBlock</text>
+<text x="650" y="102" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">  + [Conv2d(nf→nf, k3, stride=2)] if down else nothing</text>
+<text x="650" y="120" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UpBlock(ni,prev_nf→nf, L, up) = L × UnetResBlock(concat skip)</text>
+<text x="650" y="138" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">  + [Upsample×2 + Conv2d(nf→nf,k3)] if up</text>
+<text x="650" y="156" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">mid_block = UnetResBlock(nf→nf)   H = input spatial size</text>
+<text x="650" y="182" font-family="sans-serif" font-size="12.3" font-weight="normal" font-style="normal" fill="#188038" text-anchor="start">Skip connections (green): each UpBlock resnet concatenates with exactly</text>
+<text x="650" y="198" font-family="sans-serif" font-size="12.3" font-weight="normal" font-style="normal" fill="#188038" text-anchor="start">ONE saved tensor, popped LIFO — so DownBlock's ② (computed last) feeds</text>
+<text x="650" y="214" font-family="sans-serif" font-size="12.3" font-weight="normal" font-style="normal" fill="#188038" text-anchor="start">UpBlock's ❶, and ① feeds ❷ (dashed ❸ = previous level's ↓down / conv_in).</text>
+<rect x="150" y="301" width="280" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.6"/>
+<text x="160" y="293" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="start">conv_in</text>
+<text x="290.0" y="349" font-family="sans-serif" font-size="13.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Conv2d(1→32,k3,p1)</text>
+<text x="290.0" y="368" font-family="sans-serif" font-size="13.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">1ch @H → 32ch @H</text>
+<rect x="910" y="301" width="280" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.6"/>
+<text x="920" y="293" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="start">conv_out</text>
+<text x="1050.0" y="349" font-family="sans-serif" font-size="13.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">norm,act,Conv2d</text>
+<text x="1050.0" y="368" font-family="sans-serif" font-size="13.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">32ch @H → 1ch @H</text>
+<rect x="150" y="511" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="160" y="503" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">DownBlock 1</text>
+<rect x="162" y="523" width="256" height="82" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="290.0" y="539" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ① then ②</text>
+<text x="174" y="561" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">①</text>
+<text x="196" y="561" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(32→32)</text>
+<text x="174" y="583" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">②</text>
+<text x="196" y="583" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(32→32)</text>
+<rect x="162" y="615" width="256" height="70" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="290.0" y="637" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↓ down</text>
+<text x="290.0" y="657" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Conv2d(32→32,k3,s2)</text>
+<rect x="150" y="816" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="160" y="808" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">DownBlock 2</text>
+<rect x="162" y="828" width="256" height="82" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="290.0" y="844" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ① then ②</text>
+<text x="174" y="866" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">①</text>
+<text x="196" y="866" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(32→64)</text>
+<text x="174" y="888" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">②</text>
+<text x="196" y="888" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(64→64)</text>
+<rect x="162" y="920" width="256" height="70" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="290.0" y="942" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↓ down</text>
+<text x="290.0" y="962" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Conv2d(64→64,k3,s2)</text>
+<rect x="150" y="1121" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="160" y="1113" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">DownBlock 3</text>
+<rect x="162" y="1133" width="256" height="82" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="290.0" y="1149" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ① then ②</text>
+<text x="174" y="1171" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">①</text>
+<text x="196" y="1171" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(64→128)</text>
+<text x="174" y="1193" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">②</text>
+<text x="196" y="1193" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(128→128)</text>
+<rect x="162" y="1225" width="256" height="70" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="290.0" y="1247" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↓ down</text>
+<text x="290.0" y="1267" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Conv2d(128→128,k3,s2)</text>
+<rect x="150" y="1426" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="160" y="1418" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">DownBlock 4</text>
+<rect x="162" y="1438" width="256" height="82" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="290.0" y="1454" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ① then ②</text>
+<text x="174" y="1476" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">①</text>
+<text x="196" y="1476" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(128→256)</text>
+<text x="174" y="1498" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">②</text>
+<text x="196" y="1498" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(256→256)</text>
+<text x="290.0" y="1556" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="italic" fill="#5f6368" text-anchor="middle">(no downsample —</text>
+<text x="290.0" y="1574" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="italic" fill="#5f6368" text-anchor="middle">last / deepest level)</text>
+<rect x="910" y="511" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="920" y="503" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">UpBlock 4</text>
+<text x="1050.0" y="545" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="italic" fill="#5f6368" text-anchor="middle">(no upsample —</text>
+<text x="1050.0" y="563" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="italic" fill="#5f6368" text-anchor="middle">shallowest level)</text>
+<rect x="922" y="591" width="256" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="1050.0" y="607" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ❶ ❷ ❸ in order</text>
+<text x="934" y="673" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❶</text>
+<text x="956" y="673" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(96→32)</text>
+<text x="934" y="651" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❷</text>
+<text x="956" y="651" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(64→32)</text>
+<text x="934" y="629" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❸</text>
+<text x="956" y="629" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(64→32)</text>
+<rect x="910" y="816" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="920" y="808" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">UpBlock 3</text>
+<rect x="922" y="828" width="256" height="56" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="1050.0" y="849" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↑ up</text>
+<text x="1050.0" y="868" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Upsample×2 + Conv2d(64→64,k3)</text>
+<rect x="922" y="896" width="256" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="1050.0" y="912" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ❶ ❷ ❸ in order</text>
+<text x="934" y="978" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❶</text>
+<text x="956" y="978" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(192→64)</text>
+<text x="934" y="956" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❷</text>
+<text x="956" y="956" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(128→64)</text>
+<text x="934" y="934" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❸</text>
+<text x="956" y="934" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(96→64)</text>
+<rect x="910" y="1121" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="920" y="1113" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">UpBlock 2</text>
+<rect x="922" y="1133" width="256" height="56" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="1050.0" y="1154" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↑ up</text>
+<text x="1050.0" y="1173" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Upsample×2 + Conv2d(128→128,k3)</text>
+<rect x="922" y="1201" width="256" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="1050.0" y="1217" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ❶ ❷ ❸ in order</text>
+<text x="934" y="1283" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❶</text>
+<text x="956" y="1283" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(384→128)</text>
+<text x="934" y="1261" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❷</text>
+<text x="956" y="1261" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(256→128)</text>
+<text x="934" y="1239" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❸</text>
+<text x="956" y="1239" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(192→128)</text>
+<rect x="910" y="1426" width="280" height="205" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="920" y="1418" font-family="sans-serif" font-size="16.5" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">UpBlock 1</text>
+<rect x="922" y="1438" width="256" height="56" rx="0" style="fill:none;stroke:#5f6368;stroke-width:1.1"/>
+<text x="1050.0" y="1459" font-family="sans-serif" font-size="13.5" font-weight="bold" font-style="normal" fill="#5f6368" text-anchor="middle">↑ up</text>
+<text x="1050.0" y="1478" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">Upsample×2 + Conv2d(256→256,k3)</text>
+<rect x="922" y="1506" width="256" height="110" rx="0" style="fill:none;stroke:#1a73e8;stroke-width:1.1"/>
+<text x="1050.0" y="1522" font-family="sans-serif" font-size="12" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">resnets — run ❶ ❷ ❸ in order</text>
+<text x="934" y="1588" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❶</text>
+<text x="956" y="1588" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(512→256)</text>
+<text x="934" y="1566" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❷</text>
+<text x="956" y="1566" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(512→256)</text>
+<text x="934" y="1544" font-family="sans-serif" font-size="15" font-weight="bold" font-style="normal" fill="#1a73e8" text-anchor="middle">❸</text>
+<text x="956" y="1544" font-family="sans-serif" font-size="12" font-weight="normal" font-style="normal" fill="#202124" text-anchor="start">UnetResBlock(384→256)</text>
+<rect x="555.0" y="1706" width="230" height="95" rx="0" style="fill:none;stroke:#d93025;stroke-width:1.7"/>
+<text x="565.0" y="1698" font-family="sans-serif" font-size="16" font-weight="bold" font-style="normal" fill="#d93025" text-anchor="start">mid_block</text>
+<text x="670.0" y="1746" font-family="sans-serif" font-size="13.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">UnetResBlock(256→256)</text>
+<text x="670.0" y="1767" font-family="sans-serif" font-size="12.5" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="middle">256ch @H/8</text>
+<path d="M 290.0 413 L 290.0 509" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="300.0" y="465.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="start">32ch @H</text>
+<path d="M 290.0 718 L 290.0 814" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="300.0" y="770.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="start">32ch, H→H/2</text>
+<path d="M 290.0 1023 L 290.0 1119" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="300.0" y="1075.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="start">64ch, H/2→H/4</text>
+<path d="M 290.0 1328 L 290.0 1424" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="300.0" y="1380.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="start">128ch, H/4→H/8</text>
+<path d="M 1050.0 509 L 1050.0 413" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="1040.0" y="465.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="end">32ch @H</text>
+<path d="M 1050.0 814 L 1050.0 718" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="1040.0" y="770.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="end">64ch, H/2→H</text>
+<path d="M 1050.0 1119 L 1050.0 1023" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="1040.0" y="1075.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="end">128ch, H/4→H/2</text>
+<path d="M 1050.0 1424 L 1050.0 1328" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="1040.0" y="1380.0" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="end">256ch, H/8→H/4</text>
+<path d="M 290.0 1633 L 290.0 1753.5 L 553.0 1753.5" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<path d="M 787.0 1753.5 L 1050.0 1753.5 L 1050.0 1633" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="300.0" y="1696.25" font-family="sans-serif" font-size="13" font-weight="normal" font-style="normal" fill="#5f6368" text-anchor="start">256ch @H/8</text>
+<path d="M 290.0 243 L 290.0 299" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="290.0" y="235" font-family="sans-serif" font-size="14.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">input</text>
+<path d="M 1050.0 299 L 1050.0 243" style="fill:none;stroke:#202124;stroke-width:1.9" marker-end="url(#arrow-black)"/>
+<text x="1050.0" y="235" font-family="sans-serif" font-size="14.5" font-weight="normal" font-style="normal" fill="#202124" text-anchor="middle">output</text>
+<path d="M 432 557 L 908 647" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="594.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">①→❷  32ch @H</text>
+<path d="M 432 579 L 908 669" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="638.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">②→❶  32ch @H</text>
+<path d="M 432 862 L 908 952" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="899.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">①→❷  64ch @H/2</text>
+<path d="M 432 884 L 908 974" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="943.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">②→❶  64ch @H/2</text>
+<path d="M 432 1167 L 908 1257" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="1204.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">①→❷  128ch @H/4</text>
+<path d="M 432 1189 L 908 1279" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="1248.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">②→❶  128ch @H/4</text>
+<path d="M 432 1472 L 908 1562" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="1509.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">①→❷  256ch @H/8</text>
+<path d="M 432 1494 L 908 1584" style="fill:none;stroke:#188038;stroke-width:1.7" marker-end="url(#arrow-green)"/>
+<text x="670.0" y="1553.0" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">②→❶  256ch @H/8</text>
+<path d="M 432 356.0 L 908 625" style="fill:none;stroke:#188038;stroke-width:1.6" marker-end="url(#arrow-green)" stroke-dasharray="5,3"/>
+<text x="670.0" y="484.5" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">conv_in→❸  32ch @H</text>
+<path d="M 432 643 L 908 930" style="fill:none;stroke:#188038;stroke-width:1.6" marker-end="url(#arrow-green)" stroke-dasharray="5,3"/>
+<text x="670.0" y="780.5" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">↓down→❸  32ch @H/2</text>
+<path d="M 432 948 L 908 1235" style="fill:none;stroke:#188038;stroke-width:1.6" marker-end="url(#arrow-green)" stroke-dasharray="5,3"/>
+<text x="670.0" y="1085.5" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">↓down→❸  64ch @H/4</text>
+<path d="M 432 1253 L 908 1540" style="fill:none;stroke:#188038;stroke-width:1.6" marker-end="url(#arrow-green)" stroke-dasharray="5,3"/>
+<text x="670.0" y="1390.5" font-family="sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="4" stroke-linejoin="round" fill="#188038">↓down→❸  128ch @H/8</text>
+</svg>
